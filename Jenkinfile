@@ -1,0 +1,18 @@
+pipeline
+ agent any
+ stages{
+   stage('test')
+  	{
+	echo "Runnning the Test Stage"
+	sh 'ant -f test.xml -v'
+	junit 'reports/result.xml'
+	eho "exiting the test stage"
+	}
+   stage('build')
+	{
+		echo "this is the build stage"
+		sh 'ant -f build.xml -v'
+		echo "build completed"
+	}
+	}
+		
